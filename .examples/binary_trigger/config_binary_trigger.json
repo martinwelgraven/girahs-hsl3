@@ -1,0 +1,59 @@
+{
+  "module": {
+    "category": "Examples",
+    "context": "HSL3ExampleContext",
+    "id": "10700",
+    "name": "HSL3 Example Binary Trigger",
+    "hsl_filename": "10700_binary_trigger.hsl",
+    "version": "1.0",
+    "inputs": [
+      {
+        "type": "number",
+        "identifier": "input",
+        "init_value": "0",
+        "label": "I1"
+      }
+    ],
+    "outputs": [
+      {
+        "type": "number",
+        "identifier": "not_equal_to_zero",
+        "init_value": 0,
+        "label": "O1 (I1!=0)"
+      },
+      {
+        "type": "number",
+        "identifier": "equal_to_zero",
+        "init_value": 0,
+        "label": "O2 (I1==0)"
+      }
+    ],
+    "stores": [],
+    "timers": [],
+    "scripts": [
+      {
+        "filename": "hsl3_10700_binary_trigger.py"
+      }
+    ],
+    "translations": [
+      {
+        "language": "de",
+        "name": "HSL3 Beispiel Binärauslöser",
+        "category": "Beispiele",
+        "translation_inputs": [
+          {
+            "label": "E1"
+          }
+        ],
+        "translation_outputs": [
+          {
+            "label": "A1 (E1!=0)"
+          },
+          {
+            "label": "A2 (E1==0)"
+          }
+        ]
+      }
+    ]
+  }
+}
