@@ -8,6 +8,7 @@ from configs.timer import ConfigTimer
 from configs.script import ConfigScript
 from configs.translation import ConfigTranslation
 
+
 def parse_json(file_content):
     root = json.loads(file_content)
     inputs = []

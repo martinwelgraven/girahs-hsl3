@@ -7,6 +7,7 @@ from hsl_types.store import StoreType
 from hsl_types.input import InputType
 from hsl_types.output import OutputType
 
+
 class ModuleParser:
     module_code = []
     slot_base_path = 0
