@@ -1,4 +1,4 @@
-# girahs-hsl3-logic-generator
+# girahs-hsl3
 
 Generate HSL3 logic blocks from a JSON configuration file.
 
