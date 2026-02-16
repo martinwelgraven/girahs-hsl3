@@ -1,0 +1,8 @@
+5000|"Examples\HSL3 Example HTTP Request"|0|2|"Trigger HTTP Request"|"Parameter In"|1|"Parameter Out"|"1.0"|0|0
+4999|"de"|"Beispiele\HSL3 Beispiel HTTP Abfrage"|"Start HTTP Abfrage"|"Parameter Vorgabe"|"Parameter Ausgabe"
+5001||2|1|0|0|1|0|"HSL3.main.HSL3ExampleContext"
+5002|1|0|0
+5002|2|"test"|1
+5004|1|""|0|1|1
+5012|0|""|"HSL3.set_output_name(1, "param_out")"|""|0|0|0|0
+5012|0|""|"HSL3.load('hsl3_10701_http_request', 'H4sIAAAAAAAC/41UwW7bMAy9+ysEnWwgVTYMHdoAOe2wS3cptlMQCIpM29oUyZPodkXRfx9tx45tJFt9sUQ+ks/ko82x9gEZVgFUblyZmN4Q4HcDEWOSaKtiZA++NPqbzxsLm4TRk0PBpDTOoJRpBFusWBXtp6z3tk9rFMUz23aOuTmHQ1OS54QRmsojyM4sI2g03qXZPKZWQR2ponxStgEK5vwSwDc4RYxkvevYnrgaVzcYVyyiD7Ak3dEQ1pdpwb8oayEfotmzwYr9gpe4Ya99DtHe0uyN/4/uqabo7ikf/BQ35aiV1TOO7yPXhr2PnCkGIrpSroR8SuVc6/p3XP2Mf1TAYMoSAs+Ycjk7eG/TeZoRsKDQC5OqjgoV37tTiiqUgNteQYC6krlClV2IFpGwmM77jOYI4dTo7jwpXJPiz+Bz8g4+wTXBtiKrEOu4Wa/b98E44UO5Jmp8ko96FAn6ygvv+Ybxgwp8xfjxRSJtmewAZL/Q8Lfr0/8KyH48PtCwich0xAFi7V1shzXssSBCKcFWJzLb/pVdz/4IGswTqWvIRnWGo9DeITjcbT5/2F9R/nQPx7ifsd3rHafZRb7fLRqwX/47RGjavZNduT/97ooI2CYn9axYmk2menYsBzWkmyD4yJIGcYm2AKd9TtI00d/c3d3e33y8JXkmfwHFPABxMgUAAA==')"|""|0|0|0|0

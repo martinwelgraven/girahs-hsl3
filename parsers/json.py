@@ -9,7 +9,7 @@ from configs.script import ConfigScript
 from configs.translation import ConfigTranslation
 
 
-def parse_json(file_content):
+def parse_json(base_path_source_file, file_content):
     root = json.loads(file_content)
     inputs = []
     outputs = []

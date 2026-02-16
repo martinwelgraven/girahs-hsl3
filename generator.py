@@ -32,6 +32,7 @@ def main():
     debug('Debug mode is enabled.')
     debug(f'Version: {__version__}')
     debug(f'Source file: {source_file}')
+    debug(f'Base path: {base_path_source_file}')
 
     with open(source_file, 'r', encoding='utf-8') as qf:
         content = qf.read()
@@ -41,11 +42,11 @@ def main():
             raise Exception('XML format is currently not supported. Please provide a .json file.')
             module_config = parse_xml(content)
         elif file_extension == '.json':
-            module_config = parse_json(content)
+            module_config = parse_json(base_path_source_file, content)
         else:
             raise Exception('Unsupported file type. Please provide a .xml or .json file.')
     
-    module_content = ModuleParser().get_module_file_content(module_config)
+    module_content = ModuleParser().get_module_file_content(base_path_source_file, module_config)
     if len(target_file) == 0:
         target_file = os.path.join(str(base_path_source_file), str(module_config.hsl_filename))
     debug(f'Target file: {target_file}')
@@ -55,4 +56,10 @@ def main():
         debug(f'Content written to target file \'{target_file}\'.')
 
 if __name__ == '__main__':
+    os.system('cls' if os.name == 'nt' else 'clear')
+    print('\n')
+    print(f'Creating HSL3 Logic Block')
+    print(f'=========================')
     main()
+    print(f'=========================')
+    print('\n')

@@ -18,7 +18,9 @@ class ModuleParser:
     inputs_str = ''
     outputs_str = ''
 
-    def get_module_file_content(self, module_config: ConfigModule):
+    def get_module_file_content(self, base_path_source_file, module_config: ConfigModule):
+        self.base_path_source_file = base_path_source_file
+
         self.set_inputs_str(module_config.inputs)
         self.set_outputs_str(module_config.outputs)
 
@@ -222,6 +224,7 @@ class ModuleParser:
         script_prefix = f'hsl3_{module_config.id}'
         
         for script in module_config.scripts:
+            print(f'Processing script file: {script}')
             if hasattr(script, 'folder') and len(str(script.folder)) > 0:
                 for filename in os.listdir(os.path.join(str(self.base_path_source_file), str(script.folder))):
                     if filename.startswith(script_prefix) and filename.endswith('.py'):
