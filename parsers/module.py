@@ -3,9 +3,9 @@ import base64
 import gzip
 import os
 from configs.module import ConfigModule
-from types.store import StoreType
-from types.input import InputType
-from types.output import OutputType
+from hsl_types.store import StoreType
+from hsl_types.input import InputType
+from hsl_types.output import OutputType
 
 class ModuleParser:
     module_code = []

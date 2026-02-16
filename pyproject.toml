@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "girahs-hsl3-logic-generator"
+version = "0.1.0"
+description = "Generator for HSL3 logic blocks from JSON configuration."
+readme = "README.md"
+requires-python = "=3.9"
+authors = [{ name = "Martin Welgraven" }]
+keywords = ["hsl3", "generator", "logic"]
+
+[project.scripts]
+girahs-hsl3-logic-generator = "main:main"
+
+[tool.setuptools]
+py-modules = ["main"]
+packages = ["configs", "parsers", "hsl_types"]

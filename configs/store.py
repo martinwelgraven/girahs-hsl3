@@ -1,4 +1,4 @@
-from types.store import StoreType
+from hsl_types.store import StoreType
 from dataclasses import dataclass, field
 from typing import Optional, Union
 

@@ -1,4 +1,4 @@
-from types.input import InputType
+from hsl_types.input import InputType
 from dataclasses import dataclass, field
 from typing import Optional, Union
 

@@ -1,7 +1,8 @@
 global debug_mode
 global base_path_source_file
-__version__ = '0.1.251111'
-__author__ = '4ba GmbH'
+
+__version__ = '0.1.0'
+__author__ = 'Martin Welgraven'
 
 import argparse
 import os

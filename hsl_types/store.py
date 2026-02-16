@@ -1,5 +1,6 @@
 from enum import Enum
 
+
 class StoreType(Enum):
     NUMBER = 1
     STRING = 2

@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import List, Optional
 import datetime
 from configs.output import ConfigOutput
@@ -18,9 +18,9 @@ class ConfigModule:
     inputs: List[ConfigInput]
     outputs: List[ConfigOutput]
     scripts: List[ConfigScript]
-    stores: List[ConfigStore] = []
-    timers: List[ConfigTimer] = []
-    translations: List[ConfigTranslation] = []
+    stores: List[ConfigStore] = field(default_factory=list)
+    timers: List[ConfigTimer] = field(default_factory=list)
+    translations: List[ConfigTranslation] = field(default_factory=list)
     
     version: Optional[str] = datetime.datetime.now().strftime('%y%m%d')
     hsl_filename: Optional[str] = ''
