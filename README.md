@@ -1,6 +1,6 @@
 # girahs-hsl3
 
-Generate HSL3 logic blocks from a JSON configuration file.
+A HSL3 logic toolset ot design, build, test and release logic blocks from a JSON configuration file.
 
 ## Requirements
 
