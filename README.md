@@ -51,4 +51,8 @@ project
 - XML input is currently not supported; use JSON.
 - Make sure you incorporateS a HTML with your Logic Node information with the name `log00000.html`
 
-## Feature requests
+## Future developments
+
+- Develop and test other functionalities like stores and timers
+- Autogenerate the HTML file for Logic Node information purposes
+- Create a package to import directly in the logic node project
