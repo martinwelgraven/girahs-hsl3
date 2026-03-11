@@ -1,17 +1,19 @@
-from hsl3.hsl3_debug_section import Hsl3DebugSection
+from typing import Union
+
+from .hsl3_debug_section import Hsl3DebugSection
+from .hsl3_generator.configs.module import ConfigModule
 
 class HSL3:
     """A dummy class for the HSL3 logic generator."""
 
-    inputs = {}
-    stores = {}
-    outputs = {}
-    timers = {}
-
-
     def __init__(self, name: str):
         """Initialize the HSL3 logic generator."""
         self.name = name
+        self.inputs = {}
+        self.stores = {}
+        self.outputs = {}
+        self.timers = {}
+        self.config: Union[ConfigModule, None] = None
 
     def create_debug_section(self):
         debug_section = Hsl3DebugSection()
@@ -47,13 +49,24 @@ class HSL3:
         ● If the method is not called from the thread of the context, an exception of type Hsl3ContextError is triggered.
         ● If, for the value parameter, None or a "string" type value is transferred, an exception  of the ValueError type is triggered.        
         """
+        isfound = False
+        if self.config != None:
+            for cfg_input in self.config.outputs:
+                if cfg_input.identifier == index_or_key:
+                    print(f"Output found by key: {index_or_key}")
+                    isfound = True
+                    break
+        
+        if isfound == False: raise ValueError(f"Output index or key '{index_or_key}' does not exist.") 
+        
         self.outputs[index_or_key] = value
         if isinstance(value, str):
-            raise ValueError("String values are not allowed. Please encode to bytes before setting the output. Key: {index_or_key}, Value: {value}")
+            raise ValueError(f"String values are not allowed. Please encode to bytes before setting the output. Key: {index_or_key}, Value: {value}")
         elif isinstance(value, (bytes, bytearray)):
             display = value.decode("ascii")
         else:
             display=value
+        
         print(f"Output set: {index_or_key} = {display}")
     
     def set_store(self, index_or_key, value):

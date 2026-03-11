@@ -1,13 +1,15 @@
 import os
+from typing import Union
 from .hsl3_generator.parsers.json import parse_json
 from .hsl3_slots import Hsl3Slots
+from .hsl3_generator.configs.module import ConfigModule
 
 
 class Hsl3WrapperNode:
 
     def __init__(self, root_dir: str, logic_node_name: str, node: object) -> None:
         self.node = node
-        self.module = None
+        self.module: Union[ConfigModule, None] = None
 
         source_file = f'{root_dir}/src/config_{logic_node_name}.json'
     
