@@ -2,14 +2,41 @@
 
 A HSL3 logic toolset to design, build, test and release logic blocks from a JSON configuration file.
 
+
+> **EARLY STAGES OF DEVELOPMENT**<br/>
+This software is an the early stages of development. Please use accordingly and provide feedback if you experience issues.
+
+> **Independent Development & Non-Affiliation Disclaimer**<br/>
+This software is an independent developed SDK. It is not affiliated with, endorsed by, or supported by Gira Giersiepen GmbH & Co. KG or any of her affiliated companies. All referenced product and company names are trademarks of their respective owners and are used for identification purposes only.  
+
 ## Requirements
 
 - Python 3.9.x (as installed on the HomeServer/FacilityServer itself).
 
+## Project setup 
+Download the hsl3 folder out of this module and add it to your logic node repositiory. Import the hsl3 Framework so you can write simple tests.
+```
+project
+├── docs/      # documentation on the logic node
+├── hsl3/      # HSL3 Framework
+├── src/       # Logic Node files
+|    ├── config_my_logic_node.json
+|    ├── hsl3_00000_my_logic_node.py
+|    ├── log00000.html
+|    └── 00000_my_logic_node.hsl
+├── tests/     # Test files
+├── README.md  # Your Logic Node readme
+└── LICENCE    # Your Logic Node Licence
+```
+Please note that adhering to the filenaming convention is required to make your logic node accepted by the HomeServer.
+
 ## Quick start
 
-1. Place your configuration JSON file (for example `config_00000_my_file`).
-2. Run the generator:
+> Reserving your own public Logic node numbers can be requested from [DaCom Database Computing GmbH](http://www.dacom-ha.de)
+
+1. Create a JSON file as described in the GIRA HomeServer documentation.
+2. Place a configuration JSON file (for example `config_my_file.json`) in you src folder.
+3. Run the generator.
 
 >The configuration file must begin with the prefix `config_` and the 5-digit node-id `00000`. In this version only JSON files are supported and the file needs to have the correct structure. It generates a python file with the minimal methods required.
 
@@ -35,22 +62,11 @@ Since the Python file is already present, it will generate a .hsl logic node fil
 - `-t, --target`: Path to the target file (default: same directory as source file with `.hsl` extension).
 - `-d, --debug`: Enable debug output.
 
-## Usage 
-Download this module and add it as a submodule to your logic node repositiory. Import the hsl3 Framework so you can write simple tests.
-```
-project
-|- docs/   # documentation on the logic node
-|- hsl3/   # HSL3 Framework
-|- src/    # Logic Node files (.json, .py, .hsl and .html)
-|- tests/  # Test files
-|- README.md
-|- LICENCE
-```
 ## Configuration
 
 ### Config File Format (JSON)
 
-HSL3 modules are configured via JSON files. See [config_weatherdata_ecowitt.json](src/config_weatherdata_ecowitt.json) for a complete example.
+HSL3 modules are configured via JSON files. See [config_weatherdata_ecowitt.json](src/config_weatherdata_ecowitt.json) for an example.
 
 #### Module Metadata
 
