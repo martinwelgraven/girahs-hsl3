@@ -1,4 +1,7 @@
-
+"""
+This class represents a slot in the HSL3 framework.
+The data_type property is not part of the official documentation.
+"""
 
 class Hsl3Slot:
     def __init__(self) -> None:
@@ -23,6 +26,7 @@ class Hsl3Slot:
 
     @property
     def value(self):
+        self._changed = False
         return self._value
 
     @value.setter

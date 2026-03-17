@@ -1,6 +1,15 @@
-from hsl3.hsl3_generator.hsl_types.store import StoreType
 from dataclasses import dataclass, field
 from typing import Optional, Union
+from enum import Enum
+
+
+class StoreType(Enum):
+    NUMBER = 1
+    STRING = 2  # always bytes
+
+    # TODO: UPPER NEEDS TO BE REMOVED, ONLY TO TEMPORARILY SUPPORT ERROR FIXING
+    def upper(self):
+        return self.name
 
 @dataclass
 class ConfigStore:
@@ -9,6 +18,7 @@ class ConfigStore:
     type: StoreType
     index: int = field(init=False)
     identifier: Optional[str] = ''
+    description: str = ''
     _next_id: int = field(default=1, init=False, repr=False)
     
     def __post_init__(self):

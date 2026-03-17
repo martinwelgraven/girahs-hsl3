@@ -1,26 +1,29 @@
+import os
 import ast
 import base64
 import gzip
-import os
-from hsl3.hsl3_generator.configs.module import ConfigModule
-from hsl3.hsl3_generator.hsl_types.store import StoreType
-from hsl3.hsl3_generator.hsl_types.input import InputType
-from hsl3.hsl3_generator.hsl_types.output import OutputType
+
+from hsl3.hsl3_generator.configs.dcls_module import ConfigModule
+from hsl3.hsl3_generator.configs.dcls_store import StoreType
+from hsl3.hsl3_generator.configs.dcls_input import InputType
+from hsl3.hsl3_generator.configs.dcls_output import OutputType
 
 
 class ModuleParser:
-    module_code = []
-    slot_base_path = 0
-    slot_destination_port = 0
+    """ Class for parsing the JSON configuration to for a logic module. """
 
-    base_path_source_file = ''
+    def __init__(self, base_path):
+        self.module_code = []
+        self.slot_base_path = 0
+        self.slot_destination_port = 0
 
-    inputs_str = ''
-    outputs_str = ''
+        self.base_path = base_path
 
-    def get_module_file_content(self, base_path_source_file, module_config: ConfigModule):
-        self.base_path_source_file = base_path_source_file
+        self.inputs_str = ''
+        self.outputs_str = ''
 
+    def get_module_file_content(self, module_config: ConfigModule):
+        
         self.set_inputs_str(module_config.inputs)
         self.set_outputs_str(module_config.outputs)
 
@@ -228,11 +231,11 @@ class ModuleParser:
         for script in module_config.scripts:
             print(f'Processing script file: {script}')
             if hasattr(script, 'folder') and len(str(script.folder)) > 0:
-                for filename in os.listdir(os.path.join(str(self.base_path_source_file), str(script.folder))):
+                for filename in os.listdir(os.path.join(str(self.base_path), str(script.folder))):
                     if filename.startswith(script_prefix) and filename.endswith('.py'):
                             script_files.append(filename)
             if hasattr(script, 'filename') and len(str(script.filename)) > 0 and str(script.filename).startswith(script_prefix):
-                script_files.append(os.path.join(str(self.base_path_source_file), str(script.filename)))
+                script_files.append(os.path.join(str(self.base_path), str(script.filename)))
         
         if len(script_files) == 0:
             raise Exception(f'No file with prefix {script_prefix} was found.')

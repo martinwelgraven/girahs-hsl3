@@ -4,19 +4,19 @@ A HSL3 logic toolset to design, build, test and release logic blocks from a JSON
 
 
 > **EARLY STAGES OF DEVELOPMENT**<br/>
-This software is an the early stages of development. Please use accordingly and provide feedback if you experience issues.
+This software is in the early stages of development. Please use it accordingly and provide feedback if you experience issues.
 
 > **Independent Development & Non-Affiliation Disclaimer**<br/>
-This software is an independent developed SDK. It is not affiliated with, endorsed by, or supported by Gira Giersiepen GmbH & Co. KG or any of her affiliated companies. All referenced product and company names are trademarks of their respective owners and are used for identification purposes only.  
+This software is an independently developed SDK. It is not affiliated with, endorsed by, or supported by Gira Giersiepen GmbH & Co. KG or any of its affiliated companies. All referenced product and company names are trademarks of their respective owners and are used for identification purposes only.  
 
 ## Requirements
 
 - Python 3.9.x (as installed on the HomeServer/FacilityServer itself).
 
-## Project setup 
-Download the hsl3 folder out of this module and add it to your logic node repositiory. Import the hsl3 Framework so you can write simple tests.
+## Logic Node Project setup 
+Download the hsl3 folder from this module and add it to your logic node repository. Import the hsl3 framework so you can write simple tests.
 ```
-project
+project        # foldernaam must be in the format of '00000-my-project'
 ├── docs/      # documentation on the logic node
 ├── hsl3/      # HSL3 Framework
 ├── src/       # Logic Node files
@@ -26,40 +26,40 @@ project
 |    └── 00000_my_logic_node.hsl
 ├── tests/     # Test files
 ├── README.md  # Your Logic Node readme
-└── LICENCE    # Your Logic Node Licence
+└── LICENSE    # Your Logic Node license
 ```
-Please note that adhering to the filenaming convention is required to make your logic node accepted by the HomeServer.
+Please note that adhering to the file naming convention is required to make your logic node accepted by the HomeServer.
 
 ## Quick start
 
 > Reserving your own public Logic node numbers can be requested from [DaCom Database Computing GmbH](http://www.dacom-ha.de)
 
-1. Create a JSON file as described in the GIRA HomeServer documentation.
-2. Place a configuration JSON file (for example `config_my_file.json`) in you src folder.
-3. Run the generator.
-
->The configuration file must begin with the prefix `config_` and the 5-digit node-id `00000`. In this version only JSON files are supported and the file needs to have the correct structure. It generates a python file with the minimal methods required.
-
+1. Scaffold the project by placing a copy in the root of your new Logic Node Project and run the command:
 ```
-python3 generator.py -s config_14649_weatherdata_ecowitt.json
+python3 hsl3/hsl3_generator/generator.py -new
 ```
+Follow the steps in the terminal to set the project basics. Options include:
+ - Create a base JSON
+ - Create a project Python file
+ - Create and build the test folder and file.
 
-By default, the python is written next to the source file using the filename specified in the config JSON. You can add your code accordingly taking into account the limitations of the HSL3 framework.
+> The provided file naming is the according to the convention of GIRA. For this package naming the folder coorrectly is most important. The hsl file should not be renamed after generation.
 
 ## Generate Logic Node
 
-Generating the final Logic Node is exactly like the orignal file generation.
+Generating the final Logic Node is similar to the initial file generation.
 
 ```
-python3 generator.py -s config_14649_weatherdata_ecowitt.json
+python3 hsl3/hsl3_generator/generator.py -build 
 ```
+Again follow the steps in the terminal. You will be requested to build the HSL file and the HTML documentation file.
 
-Since the Python file is already present, it will generate a .hsl logic node file.
+** WARNING ** The files will be overwritten after confirmation.
 
 ## CLI options
 
-- `-s, --source`: Path to the source file (default: `config.xml`).
-- `-t, --target`: Path to the target file (default: same directory as source file with `.hsl` extension).
+- `-n, --new`: Start an interactive setup to create a new project.
+- `-b, --build`: Build an existing project to a `.hsl` file and generate documentation.
 - `-d, --debug`: Enable debug output.
 
 ## Configuration
@@ -74,11 +74,15 @@ HSL3 modules are configured via JSON files. See [config_weatherdata_ecowitt.json
 {
   "module": {
     "id": "14649",
-    "name": "Weatherdata Ecowitt",
-    "category": "IOT device data",
-    "context": "weatherdata_ecowitt",
-    "version": "0.1.0",
-    "hsl_filename": "14649_weatherdata_ecowitt.hsl"
+        "name": "Weatherdata Ecowitt",
+        "version": "0.1.0",                           
+        "version_date": "2026-03-14",                 // This is not part of the original hsl3 framework
+        "description": "A Logic node for...",         // This is not part of the original hsl3 framework
+        "warning": "",                                // This is not part of the original hsl3 framework
+        "note": "",                                   // This is not part of the original hsl3 framework
+        "category": "IOT Device Data",
+        "context": "weatherdata_ecowitt",
+        "hsl_filename": "14649_weatherdata_ecowitt.hsl",
   }
 }
 ```
@@ -94,13 +98,15 @@ Inputs are data points received by the logic module (e.g., sensor readings, conf
       "type": "string",
       "identifier": "IN01_DATA",
       "init_value": "",
-      "label": "Data (x-www-form-urlencoded)"
+      "label": "Data (x-www-form-urlencoded)",
+      "description": "This is a description for the Help file" // This is not part of the original hsl3 framework  
     },
     {
       "type": "number",
       "identifier": "IN02_TEMP_UNIT",
       "init_value": 1,
-      "label": "Temperature (1-Celsius, 0-Fahrenheit)"
+      "label": "Temperature (1-Celsius, 0-Fahrenheit)",
+      "description": "This is a description for the Help file" // This is not part of the original hsl3 framework
     }
   ]
 }
@@ -119,13 +125,15 @@ Outputs are values calculated by the logic and sent to other Gira devices.
       "type": "string",
       "identifier": "OUT01_KEY",
       "init_value": "",
-      "label": "PASSKEY"
+      "label": "PASSKEY",
+      "description": "This is a description for the Help file" // This is not part of the original hsl3 framework
     },
     {
       "type": "number",
       "identifier": "OUT04_TEMP",
       "init_value": 0.0,
-      "label": "Temperature"
+      "label": "Temperature",
+      "description": "This is a description for the Help file" // This is not part of the original hsl3 framework
     }
   ]
 }
@@ -142,7 +150,8 @@ Stores retain values between logic executions.
       "type": "number",
       "identifier": "STORE01_LAST_TEMP",
       "init_value": 0.0,
-      "label": "Last recorded temperature"
+      "label": "Last recorded temperature",
+      "description": "This is a description for the Help file" // This is not part of the original hsl3 framework
     }
   ]
 }
@@ -157,8 +166,7 @@ Timers trigger logic at specified intervals.
   "timers": [
     {
       "identifier": "TIMER01_HEARTBEAT",
-      "label": "Heartbeat timer",
-      "default_seconds": 60
+      "description": "This is a description for the Help file" // This is not part of the original hsl3 framework
     }
   ]
 }
@@ -186,25 +194,25 @@ def process_data(headers, post_data):
 
 ### Setting Outputs
 
-Use `hsl3.set_output()` to send data to connected Gira devices:
+Use `self.fw.set_output()` to send data to connected Gira devices:
 
 ```python
-hsl3.set_output("OUT04_TEMP", 22.5)           # Number output
-hsl3.set_output("OUT01_KEY", b"mykey123")     # Bytes output
+self.fw.set_output("OUT04_TEMP", 22.5)           # Number output
+self.fw.set_output("OUT01_KEY", b"mykey123")     # Bytes output
 ```
 
 ### Managing Stores (Persistent Memory)
 
 ```python
-hsl3.set_store("STORE01_LAST_TEMP", 22.5)     # Save value
-last_value = hsl3.stores["STORE01_LAST_TEMP"] # Retrieve value
+self.fw.set_store("STORE01_LAST_TEMP", 22.5)     # Save value
+last_value = self.fw.stores["STORE01_LAST_TEMP"] # Retrieve value
 ```
 
 ### Setting Timers
 
 ```python
-hsl3.set_timer("TIMER01_HEARTBEAT", 60)  # Trigger every 60 seconds
-hsl3.set_timer("TIMER01_HEARTBEAT", 0)   # Stop the timer
+self.fw.set_timer("TIMER01_HEARTBEAT", 60)  # Trigger every 60 seconds
+self.fw.set_timer("TIMER01_HEARTBEAT", 0)   # Stop the timer
 ```
 
 ### Logging
@@ -238,10 +246,12 @@ Periodic events that trigger logic execution at specified intervals. Used for po
 
 ## Data Formats
 
+Input and output definitions in this project are JSON-based. XML input is currently not supported.
+
 ## Notes
 
 - XML input is currently not supported; use JSON.
-- Make sure you incorporateS a HTML with your Logic Node information with the name `log00000.html`
+- Make sure you include an HTML file with your Logic Node information named `log00000.html`.
 
 ## Future developments
 
