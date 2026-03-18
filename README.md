@@ -14,7 +14,7 @@ This software is an independently developed SDK. It is not affiliated with, endo
 - Python 3.9.x (as installed on the HomeServer/FacilityServer itself).
 
 ## Logic Node Project setup 
-Download the hsl3 folder from this module and add it to your logic node repository. Import the hsl3 framework so you can write simple tests.
+Download the src folder from this module and add it to your logic node repository in a folder named hsl3. Import the hsl3 framework so you can write simple tests.
 ```
 project        # foldernaam must be in the format of '00000-my-project'
 ├── docs/      # documentation on the logic node
