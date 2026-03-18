@@ -262,7 +262,8 @@ print, len, sum, map, zip, range, int, float, str, list, dict, set, tuple, type,
 
 **Numeric & Mathematical Modules**
 math, cmath, decimal, fractions, random, statistics, numbers
-Data Types & Collections
+
+**Data Types & Collections**
 collections, collections.abc, array, heapq, bisect, weakref, types, copy, pprint, reprlib, enum
 
 **Text Processing**
