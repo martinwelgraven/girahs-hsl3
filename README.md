@@ -253,6 +253,74 @@ Input and output definitions in this project are JSON-based. XML input is curren
 - XML input is currently not supported; use JSON.
 - Make sure you include an HTML file with your Logic Node information named `log00000.html`.
 
+## Standard Libraries
+
+In Python 3.9 the following libraries are available
+
+**Built-in Functions & Exceptions**
+print, len, sum, map, zip, range, int, float, str, list, dict, set, tuple, type, ValueError, TypeError, KeyError, IndexError
+
+**Numeric & Mathematical Modules**
+math, cmath, decimal, fractions, random, statistics, numbers
+Data Types & Collections
+collections, collections.abc, array, heapq, bisect, weakref, types, copy, pprint, reprlib, enum
+
+**Text Processing**
+string, re, textwrap, difflib, unicodedata, stringprep, readline
+
+**File & Directory Access**
+os, os.path, pathlib, io, fileinput, stat, filecmp, tempfile, glob, fnmatch, linecache, shutil
+
+**Data Persistence**
+pickle, copyreg, shelve, marshal, dbm, sqlite3
+
+**Data Compression & Archiving**
+zlib, gzip, bz2, lzma, zipfile, tarfile
+
+**File Formats**
+csv, configparser, json, plistlib, netrc, xdrlib
+
+**Cryptographic Services**
+hashlib, hmac, secrets
+
+**Generic OS Services**
+time, argparse, getopt, logging, getpass, curses, platform, errno, ctypes, signal, resource
+
+**Networking & Internet Protocols**
+socket, ssl, select, asyncio, asyncore, asynchat
+
+**Internet Data Handling**
+email, base64, binascii, quopri, uu
+
+**Structured Data & Parsing**
+html, html.parser, xml.etree.ElementTree, xml.dom, xml.sax
+
+**Development & Testing Tools**
+unittest, doctest, pdb, trace, timeit, profile, cProfile
+
+**Runtime Services**
+sys, traceback, warnings, gc, inspect, atexit, faulthandler
+
+**Concurrency & Parallelism**
+threading, multiprocessing, concurrent.futures, queue, _thread
+
+**Importing & Packaging**
+importlib, pkgutil, modulefinder, runpy, zipimport
+
+**GUI (Tk)**
+tkinter, tkinter.ttk, tkinter.scrolledtext
+
+**Multimedia**
+audioop, wave, chunk, colorsys, imghdr, sndhdr
+
+**Other Utilities**
+abc, contextlib, dataclasses, functools, itertools, operator, typing, uuid, zoneinfo
+
+## External Libraries
+
+requests, websockets, beautifulsoup4, pytz, python-dateutil, pymodbus
+
+
 ## Future developments
 
 - Develop and test other functionalities like stores and timers
